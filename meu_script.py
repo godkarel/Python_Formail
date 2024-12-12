@@ -24,38 +24,16 @@ def montar_mensagem():
         "Qtde. CAIXA CEO Instalada Realizada (unid.)": entry_qtde_caixa_real.get(),
         "Capacidade Cabo Lançado": entry_capacidade_cabo.get(),
         "Designação do Cabo / nº Cabo": entry_designacao_cabo.get(),
-        "Tecnologia": entry_tecnologia.get(),
         "HUB / SITE": entry_hub_site.get(),
-        "Rota / Anel": entry_rota_anel.get(),
-        "Cabo": entry_cabo.get(),
-        "Rack": entry_rack.get(),
-        "Frame": entry_frame.get(),
-        "Splitter Primário": entry_splitter_primario.get(),
-        "Splitter Secundário": entry_splitter_secundario.get(),
-        "Posição": entry_posicao.get(),
-        "Fibra": entry_fibra.get(),
-        "Atenuação": entry_atenuacao.get(),
-        "Tipo de Caixa a ser Instalada": entry_tipo_caixa.get(),
-        "Terminação Projetada (unid.)": entry_terminacao_proj.get(),
-        "Terminação Realizada (unid.)": entry_terminacao_real.get(),
-        "Sangria Projetada (unid.)": entry_sangria_proj.get(),
         "Sangria Realizada (unid.)": entry_sangria_real.get(),
-        "Lançamento Cabo Projetado (m)": entry_lancamento_cabo_proj.get(),
-        "Lançamento Cabo Realizado (m)": entry_lancamento_cabo_real.get(),
-        "Conectorização Projetada (unid.)": entry_conector_proj.get(),
-        "Conectorização Realizada (unid.)": entry_conector_real.get(),
-        "Fusão Cabo Projetado (unid.)": entry_fusao_cabo_proj.get(),
         "Fusão Cabo Realizado (unid.)": entry_fusao_cabo_real.get(),
-        "Fibra Protegida Projetada (m)": entry_fibra_prot_proj.get(),
-        "Fibra Protegida Realizada (m)": entry_fibra_prot_real.get(),
         "Pontas Reservadas Projetadas (unid.)": entry_pontas_proj.get(),
         "Pontas Reservadas Realizadas (unid.)": entry_pontas_real.get(),
         "Lançamento Tubete Projetado (m)": entry_lancamento_tubete_proj.get(),
         "Lançamento Tubete Realizado (m)": entry_lancamento_tubete_real.get(),
-        "Lançamento Duto Projetado (m)": entry_lancamento_duto_proj.get(),
         "Lançamento Duto Realizado (m)": entry_lancamento_duto_real.get(),
         "Pendências": entry_pendencias.get(),
-        "Comentários": entry_comentarios.get(),
+        "Mensagem :": entry_mensagem.get(),
     }
 
     # Monta a mensagem apenas com campos não vazios
@@ -184,172 +162,61 @@ entry_designacao_cabo = tk.Entry(tab1, justify='center')
 entry_designacao_cabo.grid(row=12, column=3, padx=10, pady=5, sticky='ew')
 
 # Bloco 4
-label_tecnologia = tk.Label(tab1, text="Tecnologia")
-label_tecnologia.grid(row=13, column=0, padx=10, pady=5, sticky='ew')
-entry_tecnologia = tk.Entry(tab1, justify='center')
-entry_tecnologia.grid(row=14, column=0, padx=10, pady=5, sticky='ew')
 
 label_hub_site = tk.Label(tab1, text="HUB / SITE")
-label_hub_site.grid(row=13, column=1, padx=10, pady=5, sticky='ew')
+label_hub_site.grid(row=13, column=0, padx=10, pady=5, sticky='ew')
 entry_hub_site = tk.Entry(tab1, justify='center')
-entry_hub_site.grid(row=14, column=1, padx=10, pady=5, sticky='ew')
-
-label_rota_anel = tk.Label(tab1, text="Rota / Anel")
-label_rota_anel.grid(row=13, column=2, padx=10, pady=5, sticky='ew')
-entry_rota_anel = tk.Entry(tab1, justify='center')
-entry_rota_anel.grid(row=14, column=2, padx=10, pady=5, sticky='ew')
-
-label_cabo = tk.Label(tab1, text="Cabo")
-label_cabo.grid(row=13, column=3, padx=10, pady=5, sticky='ew')
-entry_cabo = tk.Entry(tab1, justify='center')
-entry_cabo.grid(row=14, column=3, padx=10, pady=5, sticky='ew')
-
-# Bloco 5
-label_rack = tk.Label(tab1, text="Rack")
-label_rack.grid(row=15, column=0, padx=10, pady=5, sticky='ew')
-entry_rack = tk.Entry(tab1, justify='center')
-entry_rack.grid(row=16, column=0, padx=10, pady=5, sticky='ew')
-
-label_frame = tk.Label(tab1, text="Frame")
-label_frame.grid(row=15, column=1, padx=10, pady=5, sticky='ew')
-entry_frame = tk.Entry(tab1, justify='center')
-entry_frame.grid(row=16, column=1, padx=10, pady=5, sticky='ew')
-
-label_splitter_primario = tk.Label(tab1, text="Splitter Primário")
-label_splitter_primario.grid(row=15, column=2, padx=10, pady=5, sticky='ew')
-entry_splitter_primario = tk.Entry(tab1, justify='center')
-entry_splitter_primario.grid(row=16, column=2, padx=10, pady=5, sticky='ew')
-
-label_splitter_secundario = tk.Label(tab1, text="Splitter Secundário")
-label_splitter_secundario.grid(row=15, column=3, padx=10, pady=5, sticky='ew')
-entry_splitter_secundario = tk.Entry(tab1, justify='center')
-entry_splitter_secundario.grid(row=16, column=3, padx=10, pady=5, sticky='ew')
-
-label_posicao = tk.Label(tab1, text="Posição")
-label_posicao.grid(row=17, column=0, padx=10, pady=5, sticky='ew')
-entry_posicao = tk.Entry(tab1, justify='center')
-entry_posicao.grid(row=18, column=0, padx=10, pady=5, sticky='ew')
-
-label_fibra = tk.Label(tab1, text="Fibra")
-label_fibra.grid(row=17, column=1, padx=10, pady=5, sticky='ew')
-entry_fibra = tk.Entry(tab1, justify='center')
-entry_fibra.grid(row=18, column=1, padx=10, pady=5, sticky='ew')
-
-label_atenuacao = tk.Label(tab1, text="Atenuação")
-label_atenuacao.grid(row=17, column=2, padx=10, pady=5, sticky='ew')
-entry_atenuacao = tk.Entry(tab1, justify='center')
-entry_atenuacao.grid(row=18, column=2, padx=10, pady=5, sticky='ew')
-
-label_tipo_caixa = tk.Label(tab1, text="Tipo de Caixa a ser Instalada")
-label_tipo_caixa.grid(row=17, column=3, padx=10, pady=5, sticky='ew')
-entry_tipo_caixa = tk.Entry(tab1, justify='center')
-entry_tipo_caixa.grid(row=18, column=3, padx=10, pady=5, sticky='ew')
-
-# Bloco 6
-label_terminacao_proj = tk.Label(tab1, text="Terminação Projetada (unid.)")
-label_terminacao_proj.grid(row=19, column=0, padx=10, pady=5, sticky='ew')
-entry_terminacao_proj = tk.Entry(tab1, justify='center')
-entry_terminacao_proj.grid(row=20, column=0, padx=10, pady=5, sticky='ew')
-
-label_terminacao_real = tk.Label(tab1, text="Terminação Realizada (unid.)")
-label_terminacao_real.grid(row=19, column=1, padx=10, pady=5, sticky='ew')
-entry_terminacao_real = tk.Entry(tab1, justify='center')
-entry_terminacao_real.grid(row=20, column=1, padx=10, pady=5, sticky='ew')
-
-label_sangria_proj = tk.Label(tab1, text="Sangria Projetada (unid.)")
-label_sangria_proj.grid(row=19, column=2, padx=10, pady=5, sticky='ew')
-entry_sangria_proj = tk.Entry(tab1, justify='center')
-entry_sangria_proj.grid(row=20, column=2, padx=10, pady=5, sticky='ew')
+entry_hub_site.grid(row=14, column=0, padx=10, pady=5, sticky='ew')
 
 label_sangria_real = tk.Label(tab1, text="Sangria Realizada (unid.)")
-label_sangria_real.grid(row=19, column=3, padx=10, pady=5, sticky='ew')
+label_sangria_real.grid(row=13, column=1, padx=10, pady=5, sticky='ew')
 entry_sangria_real = tk.Entry(tab1, justify='center')
-entry_sangria_real.grid(row=20, column=3, padx=10, pady=5, sticky='ew')
-
-# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7# Bloco 7
-label_lancamento_cabo_proj = tk.Label(tab1, text="Lançamento Cabo Projetado (m)")
-label_lancamento_cabo_proj.grid(row=21, column=0, padx=10, pady=5, sticky='ew')
-entry_lancamento_cabo_proj = tk.Entry(tab1, justify='center')
-entry_lancamento_cabo_proj.grid(row=22, column=0, padx=10, pady=5, sticky='ew')
-
-label_lancamento_cabo_real = tk.Label(tab1, text="Lançamento Cabo Realizado (m)")
-label_lancamento_cabo_real.grid(row=21, column=1, padx=10, pady=5, sticky='ew')
-entry_lancamento_cabo_real = tk.Entry(tab1, justify='center')
-entry_lancamento_cabo_real.grid(row=22, column=1, padx=10, pady=5, sticky='ew')
-
-label_conector_proj = tk.Label(tab1, text="Conectorização Projetada (unid.)")
-label_conector_proj.grid(row=21, column=2, padx=10, pady=5, sticky='ew')
-entry_conector_proj = tk.Entry(tab1, justify='center')
-entry_conector_proj.grid(row=22, column=2, padx=10, pady=5, sticky='ew')
-
-label_conector_real = tk.Label(tab1, text="Conectorização Realizada (unid.)")
-label_conector_real.grid(row=21, column=3, padx=10, pady=5, sticky='ew')
-entry_conector_real = tk.Entry(tab1, justify='center')
-entry_conector_real.grid(row=22, column=3, padx=10, pady=5, sticky='ew')
-
-# Bloco 8
-label_fusao_cabo_proj = tk.Label(tab1, text="Fusão Cabo Projetado (unid.)")
-label_fusao_cabo_proj.grid(row=23, column=0, padx=10, pady=5, sticky='ew')
-entry_fusao_cabo_proj = tk.Entry(tab1, justify='center')
-entry_fusao_cabo_proj.grid(row=24, column=0, padx=10, pady=5, sticky='ew')
+entry_sangria_real.grid(row=14, column=1, padx=10, pady=5, sticky='ew')
 
 label_fusao_cabo_real = tk.Label(tab1, text="Fusão Cabo Realizado (unid.)")
-label_fusao_cabo_real.grid(row=23, column=1, padx=10, pady=5, sticky='ew')
+label_fusao_cabo_real.grid(row=13, column=2, padx=10, pady=5, sticky='ew')
 entry_fusao_cabo_real = tk.Entry(tab1, justify='center')
-entry_fusao_cabo_real.grid(row=24, column=1, padx=10, pady=5, sticky='ew')
+entry_fusao_cabo_real.grid(row=14, column=2, padx=10, pady=5, sticky='ew')
 
-label_fibra_prot_proj = tk.Label(tab1, text="Fibra Protegida Projetada (m)")
-label_fibra_prot_proj.grid(row=23, column=2, padx=10, pady=5, sticky='ew')
-entry_fibra_prot_proj = tk.Entry(tab1, justify='center')
-entry_fibra_prot_proj.grid(row=24, column=2, padx=10, pady=5, sticky='ew')
-
-label_fibra_prot_real = tk.Label(tab1, text="Fibra Protegida Realizada (m)")
-label_fibra_prot_real.grid(row=23, column=3, padx=10, pady=5, sticky='ew')
-entry_fibra_prot_real = tk.Entry(tab1, justify='center')
-entry_fibra_prot_real.grid(row=24, column=3, padx=10, pady=5, sticky='ew')
-
-# Bloco 9
 label_pontas_proj = tk.Label(tab1, text="Pontas Reservadas Projetadas (unid.)")
-label_pontas_proj.grid(row=25, column=0, padx=10, pady=5, sticky='ew')
+label_pontas_proj.grid(row=13, column=3, padx=10, pady=5, sticky='ew')
 entry_pontas_proj = tk.Entry(tab1, justify='center')
-entry_pontas_proj.grid(row=26, column=0, padx=10, pady=5, sticky='ew')
+entry_pontas_proj.grid(row=14, column=3, padx=10, pady=5, sticky='ew')
+
+
+# Bloco 5
+label_lancamento_duto_real = tk.Label(tab1, text="Lançamento Duto Realizado (m)")
+label_lancamento_duto_real.grid(row=15, column=0, padx=10, pady=5, sticky='ew')
+entry_lancamento_duto_real = tk.Entry(tab1, justify='center')
+entry_lancamento_duto_real.grid(row=16, column=0, padx=10, pady=5, sticky='ew')
 
 label_pontas_real = tk.Label(tab1, text="Pontas Reservadas Realizadas (unid.)")
-label_pontas_real.grid(row=25, column=1, padx=10, pady=5, sticky='ew')
+label_pontas_real.grid(row=15, column=1, padx=10, pady=5, sticky='ew')
 entry_pontas_real = tk.Entry(tab1, justify='center')
-entry_pontas_real.grid(row=26, column=1, padx=10, pady=5, sticky='ew')
+entry_pontas_real.grid(row=16, column=1, padx=10, pady=5, sticky='ew')
 
 label_lancamento_tubete_proj = tk.Label(tab1, text="Lançamento Tubete Projetado (m)")
-label_lancamento_tubete_proj.grid(row=25, column=2, padx=10, pady=5, sticky='ew')
+label_lancamento_tubete_proj.grid(row=15, column=2, padx=10, pady=5, sticky='ew')
 entry_lancamento_tubete_proj = tk.Entry(tab1, justify='center')
-entry_lancamento_tubete_proj.grid(row=26, column=2, padx=10, pady=5, sticky='ew')
+entry_lancamento_tubete_proj.grid(row=16, column=2, padx=10, pady=5, sticky='ew')
 
 label_lancamento_tubete_real = tk.Label(tab1, text="Lançamento Tubete Realizado (m)")
-label_lancamento_tubete_real.grid(row=25, column=3, padx=10, pady=5, sticky='ew')
+label_lancamento_tubete_real.grid(row=15, column=3, padx=10, pady=5, sticky='ew')
 entry_lancamento_tubete_real = tk.Entry(tab1, justify='center')
-entry_lancamento_tubete_real.grid(row=26, column=3, padx=10, pady=5, sticky='ew')
+entry_lancamento_tubete_real.grid(row=16, column=3, padx=10, pady=5, sticky='ew')
 
-# Bloco 10
-label_lancamento_duto_proj = tk.Label(tab1, text="Lançamento Duto Projetado (m)")
-label_lancamento_duto_proj.grid(row=27, column=0, padx=10, pady=5, sticky='ew')
-entry_lancamento_duto_proj = tk.Entry(tab1, justify='center')
-entry_lancamento_duto_proj.grid(row=28, column=0, padx=10, pady=5, sticky='ew')
-
-label_lancamento_duto_real = tk.Label(tab1, text="Lançamento Duto Realizado (m)")
-label_lancamento_duto_real.grid(row=27, column=1, padx=10, pady=5, sticky='ew')
-entry_lancamento_duto_real = tk.Entry(tab1, justify='center')
-entry_lancamento_duto_real.grid(row=28, column=1, padx=10, pady=5, sticky='ew')
-
+#Bloco 6
 label_pendencias = tk.Label(tab1, text="Pendências")
-label_pendencias.grid(row=27, column=2, padx=10, pady=5, sticky='ew')
+label_pendencias.grid(row=17, column=0, padx=10, pady=5, sticky='ew')
 entry_pendencias = tk.Entry(tab1, justify='center')
-entry_pendencias.grid(row=28, column=2, padx=10, pady=5, sticky='ew')
+entry_pendencias.grid(row=18, column=0, padx=10, pady=5, sticky='ew')
 
-label_comentarios = tk.Label(tab1, text="Comentários")
-label_comentarios.grid(row=27, column=3, padx=10, pady=5, sticky='ew')
-entry_comentarios = tk.Entry(tab1, justify='center')
-entry_comentarios.grid(row=28, column=3, padx=10, pady=5, sticky='ew')
+# Mensagem
+label_mensagem = tk.Label(tab1, text="Mensagem", font=large_font)
+label_mensagem.grid(row=20, column=0, columnspan=6, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
 
+entry_mensagem = tk.Text(tab1, height=5, font=large_font)
+entry_mensagem.grid(row=21, column=0, columnspan=6, padx=10, pady=5, sticky='ew')  # Centralizando com columnspan
 
 # Cabeçalho: DETALHAMENTO
 label_detalhamento = tk.Label(tab2, text="DETALHAMENTO", font=large_font, bg='darkblue', fg='white')
@@ -372,51 +239,55 @@ entry_endereco2.grid(row=1, column=3, padx=10, pady=5, sticky='ew')
 label_entrada_cabecalho = tk.Label(tab2, text="ENTRADA", font=large_font, bg='darkblue', fg='white')
 label_entrada_cabecalho.grid(row=2, column=0, columnspan=6, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
 
-# Informações de ENTRADA na mesma linha
-for i in range(3):  # Adiciona três entradas
-    row = 3 + i  # Ajusta a linha para cada entrada
+def criar_entrada(linha):
+    # Cria um novo conjunto de campos na linha especificada
     label_capacidade = tk.Label(tab2, text="CAPACIDADE", font=large_font)
-    label_capacidade.grid(row=row, column=0, padx=10, pady=5, sticky='e')
+    label_capacidade.grid(row=linha, column=0, padx=10, pady=5, sticky='e')
 
     entry_capacidade = tk.Entry(tab2, font=large_font)
-    entry_capacidade.grid(row=row, column=1, padx=10, pady=5, sticky='ew')
+    entry_capacidade.grid(row=linha, column=1, padx=10, pady=5, sticky='ew')
+    entry_capacidade.bind("<KeyRelease>", lambda event: verificar_entrada(entry_capacidade, linha))
 
-    label_cabo1 = tk.Label(tab2, text="CABO", font=large_font)
-    label_cabo1.grid(row=row, column=2, padx=10, pady=5, sticky='e')
+    label_cabo = tk.Label(tab2, text="CABO", font=large_font)
+    label_cabo.grid(row=linha, column=2, padx=10, pady=5, sticky='e')
 
-    entry_cabo1 = tk.Entry(tab2, font=large_font)
-    entry_cabo1.grid(row=row, column=3, padx=10, pady=5, sticky='ew')
+    entry_cabo = tk.Entry(tab2, font=large_font)
+    entry_cabo.grid(row=linha, column=3, padx=10, pady=5, sticky='ew')
 
-    label_fibra1 = tk.Label(tab2, text="FIBRA", font=large_font)
-    label_fibra1.grid(row=row, column=4, padx=10, pady=5, sticky='e')
+    label_fibra = tk.Label(tab2, text="FIBRA", font=large_font)
+    label_fibra.grid(row=linha, column=4, padx=10, pady=5, sticky='e')
 
-    entry_fibra1 = tk.Entry(tab2, font=large_font)
-    entry_fibra1.grid(row=row, column=5, padx=10, pady=5, sticky='ew')
+    entry_fibra = tk.Entry(tab2, font=large_font)
+    entry_fibra.grid(row=linha, column=5, padx=10, pady=5, sticky='ew')
+
+    # Adiciona as entradas ao dicionário
+    entradas[linha] = (entry_capacidade, entry_cabo, entry_fibra)
+
+def verificar_entrada(entry, linha):
+    # Verifica se o campo atual já gerou a próxima linha
+    if linha + 1 not in entradas and entry.get().strip():  # Só adiciona se não está vazio
+        criar_entrada(linha + 1)
+
+# Configuração inicial da interface
+root = tk.Tk()
+root.title("Gerador de Entradas Dinâmicas")
+
+large_font = ("Arial", 12)
+
+tab2 = tk.Frame(root)
+tab2.pack(fill="both", expand=True)
+
+# Dicionário para armazenar todas as entradas
+entradas = {}
+
+# Cria as primeiras entradas
+criar_entrada(3)
+
+root.mainloop()
 
 # Cabeçalho: SAÍDA
 label_saida_cabecalho = tk.Label(tab2, text="SAÍDA", font=large_font, bg='darkblue', fg='white')
 label_saida_cabecalho.grid(row=6, column=0, columnspan=6, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
-
-# Informações de SAÍDA na mesma linha
-for i in range(3):  # Adiciona três entradas
-    row = 7 + i  # Ajusta a linha para cada entrada
-    label_capacidade_saida = tk.Label(tab2, text="CAPACIDADE", font=large_font)
-    label_capacidade_saida.grid(row=row, column=0, padx=10, pady=5, sticky='e')
-
-    entry_capacidade_saida = tk.Entry(tab2, font=large_font)
-    entry_capacidade_saida.grid(row=row, column=1, padx=10, pady=5, sticky='ew')
-
-    label_cabo_saida = tk.Label(tab2, text="CABO", font=large_font)
-    label_cabo_saida.grid(row=row, column=2, padx=10, pady=5, sticky='e')
-
-    entry_cabo_saida = tk.Entry(tab2, font=large_font)
-    entry_cabo_saida.grid(row=row, column=3, padx=10, pady=5, sticky='ew')
-
-    label_fibra_saida = tk.Label(tab2, text="FIBRA", font=large_font)
-    label_fibra_saida.grid(row=row, column=4, padx=10, pady=5, sticky='e')
-
-    entry_fibra_saida = tk.Entry(tab2, font=large_font)
-    entry_fibra_saida.grid(row=row, column=5, padx=10, pady=5, sticky='ew')
 
 # Cabeçalho: EQUIPE DE FUSÃO
 label_equipe_fusao_cabecalho = tk.Label(tab2, text="EQUIPE DE FUSÃO", font=large_font, bg='darkblue', fg='white')
@@ -426,36 +297,10 @@ label_equipe_fusao_cabecalho.grid(row=10, column=0, columnspan=6, padx=10, pady=
 label_empty_space = tk.Label(tab2, text="", font=large_font)  # Espaço vazio
 label_empty_space.grid(row=11, column=0, padx=10, pady=(5, 15), sticky='ew')  # Adiciona um espaço em branco
 
-# Informações da EQUIPE DE FUSÃO na mesma linha
-for i in range(3):  # Adiciona três entradas
-    row = 11 + i  # Ajusta a linha para cada entrada
-    label_tipo_caixa1 = tk.Label(tab2, text="TIPO DE CAIXA", font=large_font)
-    label_tipo_caixa1.grid(row=row, column=0, padx=10, pady=5, sticky='e')
 
-    entry_tipo_caixa1 = tk.Entry(tab2, font=large_font)
-    entry_tipo_caixa1.grid(row=row, column=1, padx=10, pady=5, sticky='ew')
-
-    label_situacao_caixa = tk.Label(tab2, text="SITUAÇÃO CAIXA", font=large_font)
-    label_situacao_caixa.grid(row=row, column=2, padx=10, pady=5, sticky='e')
-
-    entry_situacao_caixa = tk.Entry(tab2, font=large_font)
-    entry_situacao_caixa.grid(row=row, column=3, padx=10, pady=5, sticky='ew')
-
-    label_observacao = tk.Label(tab2, text="OBSERVAÇÃO", font=large_font)
-    label_observacao.grid(row=row, column=4, padx=10, pady=5, sticky='e')
-
-    entry_observacao = tk.Entry(tab2, font=large_font)
-    entry_observacao.grid(row=row, column=5, padx=10, pady=5, sticky='ew')
-
-# Mensagem
-label_mensagem = tk.Label(tab2, text="Mensagem", font=large_font)
-label_mensagem.grid(row=14, column=0, columnspan=4, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
-
-entry_mensagem = tk.Text(tab2, height=5, font=large_font)
-entry_mensagem.grid(row=15, column=0, columnspan=4, padx=10, pady=5, sticky='ew')  # Centralizando com columnspan
 
 # Botões de ação (Opcional: Salvar, Enviar, etc.)
-button_salvar = tk.Button(tab2, text="Salvar", width=10)
+button_salvar = tk.Button(tab2, text="Salvar", width=10, font=large_font)
 button_salvar.grid(row=17, column=1, padx=10, pady=20, sticky='ew')
 
 # Finalizando o layout
@@ -463,10 +308,29 @@ button_submit = tk.Button(tab2, text="Enviar", command=enviar_email, font=large_
 button_submit.grid(row=17, column=2, padx=10, pady=20, sticky='ew')
 
 def limpar_formulario():
-    entry_nome.delete(0, tk.END)
-    entry_email.delete(0, tk.END)
-    entry_mensagem.delete("1.0", tk.END)
-    # Limpe os outros campos também...
+    entry_nome.delete(0, 'end')
+    entry_circuito_cliente.delete(0, 'end')
+    entry_endereco.delete(0, 'end')
+    entry_projeto.delete(0, 'end')
+    entry_os_numero.delete(0, 'end')
+    entry_dist_aereo_proj.delete(0, 'end')
+    entry_dist_aereo_real.delete(0, 'end')
+    entry_dist_cordoalha.delete(0, 'end')
+    entry_postes_equipados.delete(0, 'end')
+    entry_qtde_caixa_proj.delete(0, 'end')
+    entry_qtde_caixa_real.delete(0, 'end')
+    entry_capacidade_cabo.delete(0, 'end')
+    entry_designacao_cabo.delete(0, 'end')
+    entry_hub_site.delete(0, 'end')
+    entry_sangria_real.delete(0, 'end')
+    entry_fusao_cabo_real.delete(0, 'end')
+    entry_pontas_proj.delete(0, 'end')
+    entry_pontas_real.delete(0, 'end')
+    entry_lancamento_tubete_proj.delete(0, 'end')
+    entry_lancamento_tubete_real.delete(0, 'end')
+    entry_lancamento_duto_real.delete(0, 'end')
+    entry_pendencias.delete(0, 'end')
+    entry_mensagem.delete(0, 'end')
 
 # Adicionar um botão para limpar o formulário
 botao_limpar = tk.Button(tab2, text="Limpar", command=limpar_formulario, font=large_font)
