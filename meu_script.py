@@ -4,12 +4,14 @@ from tkinter import messagebox
 import re
 import csv
 import smtplib
+import geocoder
+
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def montar_mensagem():
-    # Coleta os dados dos campos de entrada
+    # Coleta os dados dos campos de entrada fixos
     campos = {
         "Nome": entry_nome.get(),
         "Circuito / Cliente": entry_circuito_cliente.get(),
@@ -33,16 +35,56 @@ def montar_mensagem():
         "Lançamento Tubete Realizado (m)": entry_lancamento_tubete_real.get(),
         "Lançamento Duto Realizado (m)": entry_lancamento_duto_real.get(),
         "Pendências": entry_pendencias.get(),
-        "Mensagem :": entry_mensagem.get(),
     }
 
-    # Monta a mensagem apenas com campos não vazios
+    # Monta a mensagem apenas com campos fixos não vazios
     mensagem = "Relatório de Gastos OS\n\n"
     for titulo, valor in campos.items():
         if valor:  # Verifica se o campo não está vazio
             mensagem += f"{titulo}: {valor}\n"
 
+    # Adiciona os valores dinâmicos das entradas
+    mensagem += "\nEntradas Dinâmicas:\n"
+    for linha, (entry_capacidade, entry_cabo, entry_fibra) in entradas.items():
+        capacidade = entry_capacidade.get().strip()
+        cabo = entry_cabo.get().strip()
+        fibra = entry_fibra.get().strip()
+
+        # Verifica se algum dos campos dessa linha foi preenchido
+        if capacidade or cabo or fibra:
+            mensagem += f"Linha {linha}:\n"
+            if capacidade:
+                mensagem += f"  - Capacidade: {capacidade}\n"
+            if cabo:
+                mensagem += f"  - Cabo: {cabo}\n"
+            if fibra:
+                mensagem += f"  - Fibra: {fibra}\n"
+
     return mensagem
+
+def limpar_formulario():
+    entry_nome.delete(0, 'end'),
+    entry_circuito_cliente.delete(0, 'end')
+    entry_endereco.delete(0, 'end')
+    entry_projeto.delete(0, 'end')
+    entry_os_numero.delete(0, 'end')
+    entry_dist_aereo_proj.delete(0, 'end')
+    entry_dist_aereo_real.delete(0, 'end')
+    entry_dist_cordoalha.delete(0, 'end')
+    entry_postes_equipados.delete(0, 'end')
+    entry_qtde_caixa_proj.delete(0, 'end')
+    entry_qtde_caixa_real.delete(0, 'end')
+    entry_capacidade_cabo.delete(0, 'end')
+    entry_designacao_cabo.delete(0, 'end')
+    entry_hub_site.delete(0, 'end')
+    entry_sangria_real.delete(0, 'end')
+    entry_fusao_cabo_real.delete(0, 'end')
+    entry_pontas_proj.delete(0, 'end')
+    entry_pontas_real.delete(0, 'end')
+    entry_lancamento_tubete_proj.delete(0, 'end')
+    entry_lancamento_tubete_real.delete(0, 'end')
+    entry_lancamento_duto_real.delete(0, 'end')
+    entry_pendencias.delete(0, 'end')
 
 def enviar_email():
     # Obtém os valores dos campos de entrada
@@ -65,6 +107,8 @@ def enviar_email():
     email['Subject'] = assunto
 
     # Adiciona o corpo do e-mail
+
+    print(mensagem)
     email.attach(MIMEText(mensagem, 'plain'))
 
     # Envia o e-mail
@@ -218,6 +262,24 @@ label_mensagem.grid(row=20, column=0, columnspan=6, padx=10, pady=(15, 5), stick
 entry_mensagem = tk.Text(tab1, height=5, font=large_font)
 entry_mensagem.grid(row=21, column=0, columnspan=6, padx=10, pady=5, sticky='ew')  # Centralizando com columnspan
 
+# Espaçamento entre o cabeçalho e as entradas
+label_empty_space = tk.Label(tab1, text="", font=large_font)  # Espaço vazio
+label_empty_space.grid(row=30, column=0, padx=10, pady=(5, 15), sticky='ew')  # Adiciona um espaço em branco
+
+# Botões de ação (Opcional: Salvar, Enviar, etc.)
+button_salvar = tk.Button(tab1, text="Salvar", width=10, font=large_font)
+button_salvar.grid(row=30, column=1, padx=10, pady=20, sticky='ew')
+
+# Finalizando o layout
+button_submit = tk.Button(tab1, text="Enviar", command=enviar_email, font=large_font)
+button_submit.grid(row=30, column=2, padx=10, pady=20, sticky='ew')
+
+# Adicionar um botão para limpar o formulário
+botao_limpar = tk.Button(tab1, text="Limpar", command=limpar_formulario, font=large_font)
+botao_limpar.grid(row=30, column=3, padx=10, pady=20, sticky='ew')
+
+
+
 # Cabeçalho: DETALHAMENTO
 label_detalhamento = tk.Label(tab2, text="DETALHAMENTO", font=large_font, bg='darkblue', fg='white')
 label_detalhamento.grid(row=0, column=0, columnspan=6, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
@@ -234,6 +296,20 @@ label_endereco2.grid(row=1, column=2, padx=10, pady=(15, 5), sticky='e')  # Espa
 
 entry_endereco2 = tk.Entry(tab2, font=large_font)
 entry_endereco2.grid(row=1, column=3, padx=10, pady=5, sticky='ew')
+
+# Adicionando o botão com ícone do Maps ao lado do endereço
+button_location = tk.PhotoImage(file="icon_maps.png")  # Substitua com o caminho para o ícone desejado
+map_button = tk.Button(tab2, image=button_location, command=lambda: obter_localizacao(entry_endereco2))
+map_button.grid(row=1, column=4, padx=10, pady=5, sticky='w')
+
+# Função para obter a localização atual usando geocoder
+def obter_localizacao(entry):
+    # Obtendo a localização usando o geocoder
+    location = geocoder.osm(entry.get())
+
+    # Preenchendo latitude e longitude no campo de entrada
+    entry.delete(0, tk.END)  # Limpar o campo
+    entry.insert(0, f"Lat: {location.lat}, Lng: {location.lng}")
 
 # Cabeçalho: ENTRADA
 label_entrada_cabecalho = tk.Label(tab2, text="ENTRADA", font=large_font, bg='darkblue', fg='white')
@@ -292,50 +368,6 @@ label_saida_cabecalho.grid(row=6, column=0, columnspan=6, padx=10, pady=(15, 5),
 # Cabeçalho: EQUIPE DE FUSÃO
 label_equipe_fusao_cabecalho = tk.Label(tab2, text="EQUIPE DE FUSÃO", font=large_font, bg='darkblue', fg='white')
 label_equipe_fusao_cabecalho.grid(row=10, column=0, columnspan=6, padx=10, pady=(15, 5), sticky='ew')  # Espaçamento acima
-
-# Espaçamento entre o cabeçalho e as entradas
-label_empty_space = tk.Label(tab2, text="", font=large_font)  # Espaço vazio
-label_empty_space.grid(row=11, column=0, padx=10, pady=(5, 15), sticky='ew')  # Adiciona um espaço em branco
-
-
-
-# Botões de ação (Opcional: Salvar, Enviar, etc.)
-button_salvar = tk.Button(tab2, text="Salvar", width=10, font=large_font)
-button_salvar.grid(row=17, column=1, padx=10, pady=20, sticky='ew')
-
-# Finalizando o layout
-button_submit = tk.Button(tab2, text="Enviar", command=enviar_email, font=large_font)
-button_submit.grid(row=17, column=2, padx=10, pady=20, sticky='ew')
-
-def limpar_formulario():
-    entry_nome.delete(0, 'end')
-    entry_circuito_cliente.delete(0, 'end')
-    entry_endereco.delete(0, 'end')
-    entry_projeto.delete(0, 'end')
-    entry_os_numero.delete(0, 'end')
-    entry_dist_aereo_proj.delete(0, 'end')
-    entry_dist_aereo_real.delete(0, 'end')
-    entry_dist_cordoalha.delete(0, 'end')
-    entry_postes_equipados.delete(0, 'end')
-    entry_qtde_caixa_proj.delete(0, 'end')
-    entry_qtde_caixa_real.delete(0, 'end')
-    entry_capacidade_cabo.delete(0, 'end')
-    entry_designacao_cabo.delete(0, 'end')
-    entry_hub_site.delete(0, 'end')
-    entry_sangria_real.delete(0, 'end')
-    entry_fusao_cabo_real.delete(0, 'end')
-    entry_pontas_proj.delete(0, 'end')
-    entry_pontas_real.delete(0, 'end')
-    entry_lancamento_tubete_proj.delete(0, 'end')
-    entry_lancamento_tubete_real.delete(0, 'end')
-    entry_lancamento_duto_real.delete(0, 'end')
-    entry_pendencias.delete(0, 'end')
-    entry_mensagem.delete(0, 'end')
-
-# Adicionar um botão para limpar o formulário
-botao_limpar = tk.Button(tab2, text="Limpar", command=limpar_formulario, font=large_font)
-botao_limpar.grid(row=17, column=3, padx=10, pady=20, sticky='ew')
-
 
 # Centralizar a coluna
 tab2.grid_columnconfigure(0, weight=1)
