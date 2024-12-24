@@ -4,7 +4,6 @@ from tkinter import messagebox
 import re
 import csv
 import smtplib
-import geocoder
 
 
 from email.mime.text import MIMEText
@@ -297,19 +296,8 @@ label_endereco2.grid(row=1, column=2, padx=10, pady=(15, 5), sticky='e')  # Espa
 entry_endereco2 = tk.Entry(tab2, font=large_font)
 entry_endereco2.grid(row=1, column=3, padx=10, pady=5, sticky='ew')
 
-# Adicionando o botão com ícone do Maps ao lado do endereço
-button_location = tk.PhotoImage(file="icon_maps.png")  # Substitua com o caminho para o ícone desejado
-map_button = tk.Button(tab2, image=button_location, command=lambda: obter_localizacao(entry_endereco2))
-map_button.grid(row=1, column=4, padx=10, pady=5, sticky='w')
 
-# Função para obter a localização atual usando geocoder
-def obter_localizacao(entry):
-    # Obtendo a localização usando o geocoder
-    location = geocoder.osm(entry.get())
 
-    # Preenchendo latitude e longitude no campo de entrada
-    entry.delete(0, tk.END)  # Limpar o campo
-    entry.insert(0, f"Lat: {location.lat}, Lng: {location.lng}")
 
 # Cabeçalho: ENTRADA
 label_entrada_cabecalho = tk.Label(tab2, text="ENTRADA", font=large_font, bg='darkblue', fg='white')
